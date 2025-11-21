@@ -20,12 +20,12 @@ function AnimatedBar({ value, label, color = "#a855f7", gradient = false }: Anim
   return (
     <div className="mb-5">
       <div className="flex justify-between mb-2">
-        <span className="text-sm font-medium text-slate-100">{label}</span>
-        <span className="text-sm font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <span className="text-sm font-medium text-slate-800">{label}</span>
+        <span className="text-sm font-bold text-slate-900">
           {value.toFixed(1)}%
         </span>
       </div>
-      <div className="w-full h-3 bg-slate-700/50 rounded-full overflow-hidden border border-purple-500/20">
+      <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
         <div
           className={`h-full rounded-full transition-all duration-1200 ease-out ${
             gradient ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500" : ""
@@ -33,7 +33,7 @@ function AnimatedBar({ value, label, color = "#a855f7", gradient = false }: Anim
           style={{
             width: animate ? `${value}%` : "0%",
             background: gradient ? undefined : color,
-            boxShadow: animate ? `0 0 20px ${color}88` : "none",
+            boxShadow: animate ? `0 8px 18px ${color}22` : "none",
           }}
         />
       </div>
@@ -66,17 +66,17 @@ const challengesData = [
 
 export default function ResultsChartSlide() {
   return (
-    <div className="h-full flex flex-col justify-center gap-8 overflow-y-auto">
+    <div className="h-full flex flex-col justify-center gap-6 overflow-y-auto w-full max-w-6xl mx-auto">
       <div className="animate-slide-in-up">
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-cyan-400 bg-clip-text text-transparent mb-3">
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-400 to-blue-500 bg-clip-text text-transparent mb-3">
           Resultados da Pesquisa
         </h2>
         <div className="h-1.5 w-32 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-in" style={{ animationDelay: "0.2s" }}>
-        <div className="p-6 rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-950/60 to-slate-900/60 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-          <h3 className="font-bold text-lg bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-slide-in" style={{ animationDelay: "0.2s" }}>
+        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+          <h3 className="font-bold text-lg text-slate-900 mb-4">
             Tempo de Experiencia
           </h3>
           <div className="space-y-4">
@@ -86,11 +86,11 @@ export default function ResultsChartSlide() {
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border border-pink-500/30 bg-gradient-to-br from-pink-950/60 to-slate-900/60 backdrop-blur-sm hover:border-pink-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/20">
-          <h3 className="font-bold text-lg bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent mb-5">
+        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+          <h3 className="font-bold text-lg text-slate-900 mb-4">
             Nivel de Conhecimento
           </h3>
-          <ResponsiveContainer width="100%" height={200}>
+          <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
                 data={knowledgeData}
@@ -109,10 +109,10 @@ export default function ResultsChartSlide() {
               <Tooltip
                 formatter={(value) => `${value.toFixed(1)}%`}
                 contentStyle={{
-                  backgroundColor: "rgba(15, 10, 40, 0.9)",
-                  border: "1px solid rgba(168, 85, 247, 0.3)",
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "8px",
-                  color: "#fff",
+                  color: "#0f172a",
                 }}
               />
             </PieChart>
@@ -120,31 +120,23 @@ export default function ResultsChartSlide() {
         </div>
       </div>
 
-      <div
-        className="p-6 rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-950/60 to-slate-900/60 backdrop-blur-sm hover:border-blue-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 animate-slide-in"
-        style={{ animationDelay: "0.4s" }}
-      >
-        <h3 className="font-bold text-lg bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-5">
-          Frequencia de Orientacoes
-        </h3>
-        <div className="space-y-4">
-          {frequencyData.map((item, idx) => (
-            <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
-          ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-slide-in" style={{ animationDelay: "0.35s" }}>
+        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+          <h3 className="font-bold text-lg text-slate-900 mb-4">Frequencia de Orientacoes</h3>
+          <div className="space-y-4">
+            {frequencyData.map((item, idx) => (
+              <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div
-        className="p-6 rounded-xl border border-orange-500/30 bg-gradient-to-br from-orange-950/60 to-slate-900/60 backdrop-blur-sm hover:border-orange-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/20 animate-slide-in"
-        style={{ animationDelay: "0.6s" }}
-      >
-        <h3 className="font-bold text-lg bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-5">
-          Principais Dificuldades Encontradas
-        </h3>
-        <div className="space-y-4">
-          {challengesData.map((item, idx) => (
-            <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
-          ))}
+        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+          <h3 className="font-bold text-lg text-slate-900 mb-4">Principais Dificuldades</h3>
+          <div className="space-y-4">
+            {challengesData.map((item, idx) => (
+              <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
