@@ -66,31 +66,31 @@ const challengesData = [
 
 export default function ResultsChartSlide() {
   return (
-    <div className="h-full flex flex-col justify-center gap-6 overflow-y-auto w-full max-w-6xl mx-auto">
+    <div className="h-full flex flex-col justify-center gap-4 overflow-y-auto w-full max-w-7xl mx-auto px-4">
       <div className="animate-slide-in-up">
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-400 to-blue-500 bg-clip-text text-transparent mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-400 to-blue-500 bg-clip-text text-transparent mb-3">
           Resultados da Pesquisa
         </h2>
         <div className="h-1.5 w-32 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-full" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-slide-in" style={{ animationDelay: "0.2s" }}>
-        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-slide-in" style={{ animationDelay: "0.2s" }}>
+        <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-lg">
           <h3 className="font-bold text-lg text-slate-900 mb-4">
-            Tempo de Experiencia
+            Tempo de Experiência
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {experienceData.map((item, idx) => (
               <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
             ))}
           </div>
         </div>
 
-        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+        <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-lg">
           <h3 className="font-bold text-lg text-slate-900 mb-4">
-            Nivel de Conhecimento
+            Nível de Conhecimento
           </h3>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie
                 data={knowledgeData}
@@ -120,19 +120,19 @@ export default function ResultsChartSlide() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-slide-in" style={{ animationDelay: "0.35s" }}>
-        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
-          <h3 className="font-bold text-lg text-slate-900 mb-4">Frequencia de Orientacoes</h3>
-          <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-slide-in" style={{ animationDelay: "0.35s" }}>
+        <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-lg">
+          <h3 className="font-bold text-lg text-slate-900 mb-4">Frequência de Orientações</h3>
+          <div className="space-y-3">
             {frequencyData.map((item, idx) => (
               <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
             ))}
           </div>
         </div>
 
-        <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-lg">
+        <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-lg">
           <h3 className="font-bold text-lg text-slate-900 mb-4">Principais Dificuldades</h3>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {challengesData.map((item, idx) => (
               <AnimatedBar key={idx} value={item.value} label={item.name} color={item.color} />
             ))}
