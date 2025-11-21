@@ -15,9 +15,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: crazy-max/ghaction-setup-node@v4
       with:
-        node-version: '20.9.0'
+        node-version: 20
 
     - name: Check Node version
       run: node --version
