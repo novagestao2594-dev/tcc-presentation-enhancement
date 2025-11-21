@@ -136,17 +136,27 @@ export default function PresentationWrapper() {
   const slideProps = slides[currentSlide].props
 
   return (
-    <div className="relative w-full h-screen bg-white overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400 rounded-full blur-3xl" />
+    <div className="relative w-full h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-3 pointer-events-none">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      {/* Floating Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-32 right-32 w-80 h-80 bg-gradient-to-br from-blue-300/15 to-cyan-300/15 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-gradient-to-br from-indigo-300/10 to-purple-300/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-gradient-to-br from-pink-300/15 to-rose-300/15 rounded-full blur-3xl animate-float-reverse" />
       </div>
 
       <div className="relative w-full h-[calc(100%-80px)] flex items-center justify-center p-6 z-10">
-        <div className="w-full max-w-6xl h-full">
+        <div className="w-full max-w-7xl h-full">
           <div
             key={slideKey}
-            className="relative w-full h-full rounded-lg border-2 border-blue-600 bg-white shadow-2xl overflow-hidden animate-slide-transition-in"
+            className="relative w-full h-full rounded-2xl border border-white/20 bg-white/95 backdrop-blur-sm shadow-2xl overflow-hidden animate-slide-transition-in"
           >
             <div className="relative z-10 h-full overflow-y-auto">
               <div className="p-16 h-full">
